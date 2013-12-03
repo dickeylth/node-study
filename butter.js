@@ -5,3 +5,27 @@ var file = require('fs');
 console.log(buf);
 
 file.writeFile("test.png", buf);
+
+var buf2 = new Buffer('Hello Buffer!');
+console.log(buf2[10]);
+buf2[10] = -10;
+console.log(buf2.length);
+
+var buf3 = buf2.slice(2, 6);
+console.log(buf3.toString());
+var buf4 = new Buffer(buf3);
+
+var buf5 = new Buffer(5);
+buf2.copy(buf5, 0, 2, 6);
+
+console.log('buf5--' + buf5.toString());
+
+buf2[4] = 102;
+console.log('buf3--' + buf3.toString());
+
+console.log('buf4--' + buf4.toString());
+
+console.log(buf5.toString());
+
+var b64 = buf5.toString('base64');
+console.log(b64);
